@@ -1,7 +1,6 @@
 package com.combat.code.services
 
 import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.server._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpec}
 
@@ -30,7 +29,7 @@ class HelloServiceSpec extends WordSpec with ScalatestRouteTest with Matchers{
 
     "test pong route" in {
       Get("/ping") ~> smallRoute ~> check {
-        responseAs[String] shouldEqual "Captain on the bridge!"
+        responseAs[String] shouldEqual "PONG!"
       }
     }
 
