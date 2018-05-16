@@ -12,5 +12,8 @@ libraryDependencies ++= Seq(
   akkaStream,
   akkaTestKit,
   akkaHTTPTestKit,
-  scalaTest
+  scalaTest,
+  slick,
+  slickHikariCp,
+  postgresSQL
 )
