@@ -39,6 +39,11 @@ class HelloServiceSpec extends WordSpec with ScalatestRouteTest with Matchers{
       }
     }
 
+    "test hello route with multiple users" in {
+      Get("/hello?name=anuj&id=him") ~> helloService.route ~> check {
+        responseAs[String] shouldEqual "<h1>Hello(name,anuj)or(id,him)</h1>"
+      }
+    }
 
   }
 }
