@@ -27,6 +27,4 @@ class DBservice {
     else
       station.headOption
   }
-
-  getBookingByStationAndDate()
 }
