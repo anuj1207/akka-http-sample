@@ -19,4 +19,5 @@ object Dependencies extends AutoPlugin {
   val slick = "com.typesafe.slick" %% "slick" % slickVersion
   val slickHikariCp = "com.typesafe.slick" %% "slick-hikaricp" % slickVersion
   val postgresSQL = "org.postgresql" % "postgresql" % postgresVersion
+  val gson = "com.google.code.gson" % "gson" % "2.3.1"
 }

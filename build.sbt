@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
   scalaTest,
   slick,
   slickHikariCp,
-  postgresSQL
+  postgresSQL,
+  gson
 )
