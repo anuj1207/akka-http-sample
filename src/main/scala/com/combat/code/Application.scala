@@ -16,6 +16,6 @@ object Application extends App{
   val helloService = new HelloService
   val findService = new FindService
   
-  val bindingFeat = Http().bindAndHandle(findService.route, "localhost", 8080)
+  val bindingFeat = Http().bindAndHandle(findService.route, "0.0.0.0", 8080)
   println("server is up")
 }
