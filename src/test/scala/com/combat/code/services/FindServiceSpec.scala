@@ -14,8 +14,8 @@ class FindServiceSpec extends WordSpec with ScalatestRouteTest with Matchers{
     }
 
     "try to find the route with some non empty input" in {
-      Get("/find?from=delhi&to=goa") ~> findService.route ~> check {
-        responseAs[String] shouldEqual "<h1>Please Do the processing on data from = delhi & to = goa</h1>"
+      Get("/find?from=delhi&to=goa&date=13may") ~> findService.route ~> check {
+        responseAs[String] shouldEqual "<h1>Please Do the processing on data from = delhi & to = goa & date = 13may</h1>"
       }
     }
   }

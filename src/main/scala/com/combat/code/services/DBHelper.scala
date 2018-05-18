@@ -8,12 +8,12 @@ import com.combat.code.repos.{BookingRepo, StationRepo}
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-class DBservice {
+object DBHelper {
 
-  def availableSlotsAtStation(station_id: Int, date: LocalDate): List[Slot] = {
-    val bookingsForDate = findAllBookings().filter(booking => booking.date == date.toString && booking.station_id == station_id)
-
-  }
+//  def availableSlotsAtStation(station_id: Int, date: LocalDate): List[Slot] = {
+//    val bookingsForDate = findAllBookings().filter(booking => booking.date == date.toString && booking.station_id == station_id)
+//
+//  }
 
   def findAllBookings(): List[Booking] = {
     val bookings = Await.result(BookingRepo.getAllBookings, Duration.Inf)

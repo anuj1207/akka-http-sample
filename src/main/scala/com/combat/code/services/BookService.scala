@@ -7,9 +7,9 @@ class BookService extends Directives{
 
   private val emptyResponse = "<h1>Please Enter Some data to find me a Fuel Station</h1>"
   private val normalResponse = (str: Map[String, String]) => s"<h1>Please Do the processing on data ${findRoute(str)}</h1>"
-  val getPath = "find"
+  val getPath = "book"
 
-  def route: Route = path("validate") {
+  def route: Route = path(getPath) {
       (post & entity(as[String])) { json =>
         println(json)
         complete(StatusCodes.Accepted)

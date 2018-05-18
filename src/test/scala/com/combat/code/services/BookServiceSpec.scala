@@ -17,7 +17,7 @@ class BookServiceSpec extends WordSpec with ScalatestRouteTest with Matchers{
           |}
         """.stripMargin
 
-      Post("/validate", json) ~> bookService.route ~> check {
+      Post("/book", json) ~> bookService.route ~> check {
         status shouldEqual StatusCodes.Accepted
       }
     }
