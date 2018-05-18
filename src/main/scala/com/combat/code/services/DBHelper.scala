@@ -20,11 +20,7 @@ object DBHelper {
     bookings
   }
 
-  def getStationById(station_id: Int): Option[Station] = {
-    val station = Await.result(StationRepo.getAllStations, Duration.Inf).filter(_.station_Id == station_id)
-    if (station != Nil)
-      None
-    else
-      station.headOption
+  def getStationById(station_id: Int): List[Station] = {
+    Await.result(StationRepo.getAllStations, Duration.Inf).filter(_.station_Id == station_id)
   }
 }

@@ -1,8 +1,10 @@
 package com.combat.code.services
 
-import java.util.HashMap
+import java.util
+import java.util.LinkedHashMap
 
-import com.combat.code.models.{Booking, Slot, Station}
+import scala.collection.JavaConverters._
+import com.combat.code.models._
 import com.combat.code.repos.{BookingRepo, SlotRepo}
 
 import scala.concurrent.Future
@@ -31,22 +33,21 @@ object EnRouteHelper {
 
   def getSlotMap(stationList: List[Station],
                   slotList: List[Slot],
-                  bookingList: List[Booking]): HashMap[Station, HashMap[Slot, Integer]] = {
-    val returnMap: HashMap[Station, HashMap[Slot, Integer]] =
-      new HashMap[Station, HashMap[Slot, Integer]]()
+                  bookingList: List[Booking]): util.LinkedList[StationJSON] = {
+    val returnObj: util.LinkedList[StationJSON] = new util.LinkedList[StationJSON]()
     for (s <- stationList) {
-      val slotMap: HashMap[Slot, Integer] = new HashMap[Slot, Integer]()
+      val slotListObj : util.LinkedList[BookingSlot] = new util.LinkedList[BookingSlot]();
       for (sl <- slotList) {
         var bookingCount: java.lang.Integer = 0
         for (b <- bookingList
              if b.station_id == s.station_Id && b.slot_id == sl.slotId) {
           { bookingCount += 1; bookingCount - 1 }
         }
-        slotMap.put(sl, bookingCount)
+        slotListObj.add(new BookingSlot(sl, bookingCount))
       }
-      returnMap.put(s, slotMap)
+      returnObj.add(new StationJSON(s , slotListObj))
     }
-    returnMap
+    returnObj
   }
 
 }
