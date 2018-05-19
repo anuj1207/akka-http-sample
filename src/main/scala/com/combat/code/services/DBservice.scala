@@ -9,12 +9,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
 class DBservice {
-
-  def availableSlotsAtStation(station_id: Int, date: LocalDate): List[Slot] = {
-    val bookingsForDate = findAllBookings().filter(booking => booking.date == date.toString && booking.station_id == station_id)
-
-  }
-
+  
   def findAllBookings(): List[Booking] = {
     val bookings = Await.result(BookingRepo.getAllBookings, Duration.Inf)
     bookings
